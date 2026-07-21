@@ -1,0 +1,20 @@
+default: spese
+
+rules:
+  - destination: autostrade
+    keywords: [autostrad, pedaggio, telepass, aspit, cava4, tangenzial]
+
+  - destination: booking
+    keywords: [booking, airbnb, trivago, hotel, hostel, ostello, "b&b", bnb, albergo, residence, camping]
+
+  - destination: investimenti
+    keywords: [degiro, directa]
+
+  - destination: ryanair
+    keywords: [ryanair, easyjet, wizzair, wizz air, vueling, volotea, ita airways, lufthansa, aeroport, airport, airways]
+
+  - destination: stato
+    keywords: [f24, agenzia entrate, sanzione, multa, tasse, imposta]
+
+  - destination: trenitalia
+    keywords: [trenitalia, italo, intercity, freccia, frecciarossa, frecciabianca]

@@ -1,0 +1,9 @@
+services:
+  curve-importer:
+    build: .
+    container_name: curve_importer
+    env_file:
+      - .env
+    volumes:
+      - ./destination_rules.yaml:/config/destination_rules.yaml:ro
+    restart: unless-stopped
