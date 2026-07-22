@@ -1,3 +1,4 @@
+import imaplib
 import logging
 import signal
 import sys
@@ -88,6 +89,12 @@ def main() -> None:
         while not _shutdown:
             try:
                 _poll_once(imap, firefly, settings)
+            except (imaplib.IMAP4.abort, imaplib.IMAP4.error, OSError) as e:
+                logger.warning("Connection lost (%s), will reconnect", e)
+                try:
+                    imap.reconnect()
+                except Exception:
+                    logger.exception("Reconnect failed, will retry next cycle")
             except Exception:
                 logger.exception("Error during poll cycle")
             for _ in range(settings.poll_interval_seconds):

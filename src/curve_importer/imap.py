@@ -61,6 +61,11 @@ class ImapGateway:
         self._conn.login(self._user, self._password)
         logger.info("IMAP connected to %s as %s", self._host, self._user)
 
+    def reconnect(self) -> None:
+        logger.info("Reconnecting to IMAP server...")
+        self.disconnect()
+        self.connect()
+
     def fetch_unseen(self, folder: str) -> list[RawEmail]:
         if self._conn is None:
             raise RuntimeError("Not connected")
